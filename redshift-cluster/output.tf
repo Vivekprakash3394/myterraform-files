@@ -7,5 +7,5 @@ output "redshift-cluster" {
 }
 
 output "redshift-s3-bucket" {
-    value = aws_s3_bucket.fe_redshift_au.bucket
+    value = aws_s3_bucket.redshift_au.bucket
 }
