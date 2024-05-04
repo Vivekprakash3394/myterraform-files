@@ -3,7 +3,7 @@ variable "aws_region" {
   description = "name of aws region"
 }
 
-variable "fes_redshift" {
+variable "redshift" {
   type = string
   description = "name of the redshift cluster"
 }
