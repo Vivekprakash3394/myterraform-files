@@ -22,22 +22,22 @@ resource "aws_iam_role_policy_attachment" "redshift" {
 }
 
 # Create S3 Bucket
-resource "aws_s3_bucket" "fe_redshift_au" {
-  bucket = "fe-redshift-au"
+resource "aws_s3_bucket" "redshift_au" {
+  bucket = "redshift-au"
 }
 
-resource "aws_s3_bucket_ownership_controls" "fe_redshift_au" {
-  bucket = aws_s3_bucket.fe_redshift_au.bucket
+resource "aws_s3_bucket_ownership_controls" "redshift_au" {
+  bucket = aws_s3_bucket.redshift_au.bucket
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
 
-resource "aws_s3_bucket_acl" "fe_redshift_au" {
+resource "aws_s3_bucket_acl" "redshift_au" {
   depends_on = [aws_s3_bucket_ownership_controls.fe_redshift_au]
 
-  bucket = aws_s3_bucket.fe_redshift_au.bucket
+  bucket = aws_s3_bucket.redshift_au.bucket
   acl    = "private"
 }
 
@@ -61,7 +61,7 @@ resource "aws_security_group" "redshift_sg" {
   name        = "redshift_sg"
   description = "Redshift security group"
 
-  vpc_id = "vpc-0f7850de79f23af80"
+  vpc_id = "vpc-0f7850de79f23af**"
 
   ingress {
     from_port   = 5439
@@ -81,5 +81,5 @@ resource "aws_security_group" "redshift_sg" {
 # Create Redshift Subnet Group
 resource "aws_redshift_subnet_group" "redshift" {
   name       = "redshift-subnet-group"
-  subnet_ids = ["subnet-0f4d15b157f3e743e", "subnet-0cf77933b28723708","subnet-0b0690f403e780ab5"] # Add your subnet IDs
+  subnet_ids = ["subnet-0f4d15b157f3e7***", "subnet-0cf77933b28723***","subnet-0b0690f403e780***"] # Add your subnet IDs
 }
